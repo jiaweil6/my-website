@@ -160,6 +160,12 @@ function renderBio(meta, about) {
                                 ${p}
                             </p>`).join('\n');
   const details = about.subsections.map(renderDetailSection).join('\n\n');
+  const cvBlock = meta.cv ? `
+
+                            <div class="bio-sidebar-block">
+                                <span class="bio-sidebar-label">CV</span>
+                                <a class="bio-sidebar-emphasis" href="${meta.cv}" download="${meta.name.replace(/\s+/g, '_')}_CV.pdf">Download PDF</a>
+                            </div>` : '';
   return `        <!-- Biography Card -->
         <div class="bio-card" id="about-section">
             <div class="container-fluid">
@@ -174,7 +180,7 @@ function renderBio(meta, about) {
                             <div class="bio-sidebar-block">
                                 <span class="bio-sidebar-label">Email</span>
                                 <a class="bio-sidebar-emphasis" href="mailto:${meta.email}">${meta.email}</a>
-                            </div>
+                            </div>${cvBlock}
                         </div>
 
                         <nav class="bio-social-links" aria-label="Social media profiles">

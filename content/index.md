@@ -6,6 +6,7 @@ canonical: https://jiaweil6.github.io/my-website/
 name: Jiawei Liu
 native_name: 刘嘉唯
 email: jiaweil6@andrew.cmu.edu
+cv: files/cv.pdf
 portrait:
   light: img/profile-photo-light.jpg
   dark: img/profile-photo.jpg
@@ -118,6 +119,15 @@ links:
 ```
 
 BXA capstone advised by Prof. Chris Donahue (Aug 2026 – present). A guitar-effect instrument that morphs continuously between real pedals so guitarists can design new hybrid tones. A VAE learns a continuous tone space from recordings of 10–20 overdrive, distortion, and fuzz pedals, played through a real-time plugin with a 2D tone plane and text control, and evaluated in recorded studio sessions with guitarists.
+
+### Piano Genie Max Edition
+
+```yaml
+icon: img/publications/project-aurora.svg
+icon_alt: Project icon
+```
+
+Final project for Twisted Signals at Carnegie Mellon University (Apr 2026). Rebuilt Piano Genie in Max 9, running the Magenta.js model through Node for Max so eight computer keys play a full piano. A JavaScript style arranger re-voices the played notes in real time as classical, jazz, or J-pop in any key and mode, feeding an 8-voice sampler (piano, violin, organ, guitar) with custom chorus, stereo delay, and reverb effects.
 
 ### Intergram
 

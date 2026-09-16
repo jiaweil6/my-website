@@ -178,6 +178,7 @@ function renderIndex(parsed) {
   const file = 'content/index.md';
   assertImage(meta.portrait.light, `${file}: portrait.light`);
   assertImage(meta.portrait.dark, `${file}: portrait.dark`);
+  if (meta.cv) assertImage(meta.cv, `${file}: cv`);
   const rendered = sections.map((section) => {
     validateSection(section, meta, file);
     switch (section.heading) {
