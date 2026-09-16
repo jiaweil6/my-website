@@ -124,8 +124,9 @@ function requireFields(entry, fields, sectionHeading, file) {
 const ENTRY_FIELDS = {
   Education: ['logo', 'logo_alt', 'degree', 'meta'],
   Publications: ['url', 'icon', 'icon_alt', 'tags', 'authors', 'links'],
+  Experience: ['label', 'organization', 'details'],
   'Teaching Experience': ['course', 'course_url', 'url', 'audience', 'position', 'links'],
-  Projects: ['url', 'icon', 'icon_alt', 'links'],
+  Projects: ['icon', 'icon_alt'],
   Music: ['url', 'subtitle', 'links'],
   Blog: ['date', 'tag', 'url', 'link_label'],
 };
@@ -160,6 +161,18 @@ function validateSection(section, meta, file) {
   }
 }
 
+// Menu anchor and label for each section, in the order the sections appear.
+const NAV = {
+  About: { id: 'about-section', label: 'About' },
+  Education: { id: 'education-section', label: 'Education' },
+  Experience: { id: 'experience-section', label: 'Experience' },
+  Publications: { id: 'publications-section', label: 'Research' },
+  'Teaching Experience': { id: 'teaching-section', label: 'Teaching' },
+  Projects: { id: 'projects-section', label: 'Projects' },
+  Music: { id: 'music-section', label: 'Music' },
+  Blog: { id: 'blog-section', label: 'Blog' },
+};
+
 function renderIndex(parsed) {
   const { meta, sections } = parsed;
   const file = 'content/index.md';
@@ -172,6 +185,8 @@ function renderIndex(parsed) {
         return T.renderBio(meta, parseAbout(section));
       case 'Education':
         return T.renderEducation(section);
+      case 'Experience':
+        return T.renderExperience(section);
       case 'Publications':
         return T.renderPublications(section, meta.publication_filters);
       case 'Teaching Experience':
@@ -183,10 +198,11 @@ function renderIndex(parsed) {
       case 'Blog':
         return T.renderBlog(section);
       default:
-        return fail(`${file}: unknown section "## ${section.heading}" — known sections: About, Education, Publications, Teaching Experience, Projects, Music, Blog`);
+        return fail(`${file}: unknown section "## ${section.heading}" — known sections: About, Education, Experience, Publications, Teaching Experience, Projects, Music, Blog`);
     }
   });
-  return T.chromeTop(meta) + rendered.join('\n\n') + '\n' + T.chromeBottom();
+  const nav = sections.map((s) => NAV[s.heading]);
+  return T.chromeTop(meta, nav) + rendered.join('\n\n') + '\n' + T.chromeBottom();
 }
 
 // ---------------------------------------------------------------------------

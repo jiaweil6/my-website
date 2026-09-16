@@ -1,8 +1,8 @@
 ---
-title: Your Name
-description: Template text for an academic site. Replace with your bio, publications, and links.
-author: Your Name
-canonical: https://example.com/oss-template/
+title: Jiawei Liu
+description: Jiawei (David) Liu, Carnegie Mellon BESA student in Electrical and Computer Engineering and Music Technology working on audio signal processing and generative music tools.
+author: Jiawei Liu
+canonical: https://jiaweil6.github.io/my-website/
 name: Jiawei Liu
 native_name: 刘嘉唯
 email: jiaweil6@andrew.cmu.edu
@@ -11,16 +11,14 @@ portrait:
   dark: img/profile-photo.jpg
   alt: Portrait of Jiawei Liu
 social:
-  - { icon: fab fa-google, label: Google Scholar, url: "https://scholar.google.com/" }
-  - { icon: fab fa-linkedin-in, label: LinkedIn, url: "https://www.linkedin.com/" }
-  - { icon: fab fa-x-twitter, label: Twitter, url: "https://twitter.com/" }
-  - { icon: fab fa-github, label: GitHub, url: "https://github.com/" }
-publication_filters: [RL, RLHF, OR, NLP]
+  - { icon: fab fa-github, label: GitHub, url: "https://github.com/jiaweil6" }
 ---
 
 ## About
 
-Hey, I'm David! I'm an undergrad at Carnegie Mellon University in the BXA interdisciplinary program in Electrical and Computer Engineering and Music Technology. As a musician, engineer, and researcher, I'm particularly interested in how advanced technology can help people become a more creative version of themselves. My engineering interests center on signal processing, especially signals sampled at 44.1 kHz. Feel free to reach out if you have any questions, or if you just want to chat!
+Hey, I'm David! I'm an undergrad at Carnegie Mellon University in the BESA program in Electrical and Computer Engineering and Music Technology. As a musician, engineer, and researcher, I'm particularly interested in how advanced technology can help people become a more creative version of themselves. My engineering interests center on signal processing, especially signals sampled at 44.1 kHz. Feel free to reach out if you have any questions, or if you just want to chat!
+
+Right now I'm a research intern in Prof. Chris Donahue's [G-CLef lab](https://gclef-cmu.org), a teaching assistant for Intro to Computer Music, and building a pedal-morphing guitar instrument for my BXA capstone.
 
 I'm also a sports enthusiast. Collegiate level badminton player 🏸, single digit handicap golfer ⛳, and recently a V2-4 climber 🧗. I'm always down to stay active, so definitely hit me up if you're interested!
 
@@ -28,11 +26,13 @@ I'm also a sports enthusiast. Collegiate level badminton player 🏸, single dig
 
 - Audio Signal Processing
 - Generative Music
+- Neural Audio Effects
 - Electroacoustics
 
 ### Skills
 
 - **Digital Signal Processing** — Python · MATLAB · C · Max/MSP
+- **Web & Course Tools** — JavaScript · Jupyter Book · Pyodide · Web Audio API
 - **Music Production** — Logic · Ableton · Pro Tools
 
 ### Languages
@@ -49,7 +49,7 @@ I'm also a sports enthusiast. Collegiate level badminton player 🏸, single dig
 logo: img/trajectory/carnegie-mellon-wordmark.png
 logo_alt: Carnegie Mellon University wordmark
 degree: BESA in ECE and Music Technology
-meta: Pittsburgh, PA · Class of 2027 · President, CMU Badminton.
+meta: Pittsburgh, PA · Class of 2027 · President, CMU Badminton · Founding Member, CMU Audio Engineering Society.
 ```
 
 ### Dwight School Seoul
@@ -61,62 +61,33 @@ degree: International Baccalaureate Diploma Programme
 meta: Seoul, South Korea · Class of 2023 · Varsity Badminton, Varsity Basketball, Varsity Volleyball, Orchestra.
 ```
 
-## Publications
+## Experience
 
-### A First Example Paper Title Goes Here
-
-```yaml
-url: https://example.com
-icon: img/publications/paper-aurora.svg
-icon_alt: Paper icon
-tags: [RL, NLP]
-authors: "**Your Name**, Coauthor A, Coauthor B"
-status: Submitted, 2026.
-links:
-  - { icon: far fa-copy, label: PDF, url: "https://example.com" }
-  - { icon: far fa-arrow-alt-circle-right, label: Code, url: "https://github.com/" }
-  - { icon: far fa-newspaper, label: Spotlight, url: "https://example.com", featured: true }
-  - { icon: far fa-newspaper, label: Press Mention, url: "https://example.com", featured: true }
-```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-
-### A Second Example Paper Title Goes Here
+### Research Intern
 
 ```yaml
-url: https://example.com
-icon: img/publications/paper-aurora.svg
-icon_alt: Paper icon
-tags: [RLHF, NLP]
-authors: "Coauthor C, **Your Name**, Coauthor D"
-venue: NeurIPS
-venue_url: https://example.com
-year: 2025
-links:
-  - { icon: far fa-copy, label: PDF, url: "https://example.com" }
-  - { icon: far fa-arrow-alt-circle-right, label: Project, url: "https://example.com" }
+label: G-CLef
+organization: Generative Creativity Lab, Carnegie Mellon University
+organization_url: https://gclef-cmu.org
+details: Advised by Prof. Chris Donahue · Sep 2026 – Present
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+Collaborating with Yewon Kim on an ongoing research project.
 
-### A Third Example Paper Title Goes Here
+### Research Intern, Course Development
 
 ```yaml
-url: https://example.com
-icon: img/publications/paper-aurora.svg
-icon_alt: Paper icon
-tags: [OR, RL]
-authors: "Coauthor E, Coauthor F, **Your Name**"
-venue: ICML
-venue_url: https://example.com
-year: 2024
+label: 15-322/622
+organization: Intro to Computer Music, Carnegie Mellon University
+organization_url: https://www.cs.cmu.edu/~15322/
+details: Advised by Prof. Chris Donahue · May 2026 – Aug 2026
 links:
-  - { icon: far fa-copy, label: PDF, url: "https://example.com" }
-  - { icon: far fa-arrow-alt-circle-right, label: GitHub, url: "https://github.com/" }
-  - { icon: far fa-newspaper, label: Blog Post, url: "https://example.com", featured: true }
+  - { icon: far fa-copy, label: Course site, url: "https://www.cs.cmu.edu/~15322/" }
+  - { icon: far fa-arrow-alt-circle-right, label: browseraudio on GitHub, url: "https://github.com/jiaweil6/browseraudio" }
+  - { icon: far fa-arrow-alt-circle-right, label: PyPI, url: "https://pypi.org/project/browseraudio/" }
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+Co-developed the Fall 2026 redesign of the course, building its interactive online textbook and course website with Jupyter Book and MyST. Added live in-browser Python (Pyodide), interactive Plotly widgets, and Manim animations to teach DSP concepts; built and published **browseraudio**, an open-source library for recording and playing audio in browser-based Python; and wrote new assignments on convolution, Fourier analysis, filters, and reverb with Python autograder tests for Gradescope.
 
 ## Teaching Experience
 
@@ -125,69 +96,46 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```yaml
 course: 15-322/622
 course_url: https://www.cs.cmu.edu/~15322/
-url: https://www.cs.cmu.edu/~15322/about/
+url: https://www.cs.cmu.edu/~15322/
 audience: Undergraduate / Graduate
-position: Teaching Assistant, Spring 2026
+position: Teaching Assistant, Spring 2026 – Present
 links:
   - { icon: far fa-copy, label: Course site, url: "https://www.cs.cmu.edu/~15322/" }
 ```
 
-Worked with Professor Chris Donahue to support a programming- and project-based course covering digital audio fundamentals, sound synthesis, and audio signal processing. Hosted office hours, answered student questions on Piazza, led review sessions, and graded assignments and final projects, with a focus on helping students apply computational tools to sound synthesis, audio effects, and music composition. Also helped shape the next iteration of ICM by incorporating more contemporary computer music approaches and developing new homework assignments and projects.
+Work with Professor Chris Donahue to support a programming- and project-based course covering digital audio fundamentals, sound synthesis, and audio signal processing. Host office hours, answer student questions on Piazza, lead review sessions, and grade assignments and final projects, with a focus on helping students apply computational tools to sound synthesis, audio effects, and music composition.
 
 ## Projects
 
-### A Personal Project Title Goes Here
+### Pedal Morphing Instrument
 
 ```yaml
-url: https://example.com
+url: https://jiaweil6.github.io/bxa-capstone/
 icon: img/publications/project-aurora.svg
 icon_alt: Project icon
 links:
-  - { icon: far fa-arrow-alt-circle-right, label: Repository, url: "https://github.com/" }
-  - { icon: far fa-arrow-alt-circle-right, label: Docs, url: "https://example.com" }
-  - { icon: far fa-newspaper, label: Media Mention, url: "https://example.com", featured: true }
+  - { icon: far fa-arrow-alt-circle-right, label: Project page, url: "https://jiaweil6.github.io/bxa-capstone/" }
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+BXA capstone advised by Prof. Chris Donahue (Aug 2026 – present). A guitar-effect instrument that morphs continuously between real pedals so guitarists can design new hybrid tones. A VAE learns a continuous tone space from recordings of 10–20 overdrive, distortion, and fuzz pedals, played through a real-time plugin with a 2D tone plane and text control, and evaluated in recorded studio sessions with guitarists.
 
-### Another Personal Project Example
+### Intergram
 
 ```yaml
-url: https://example.com
 icon: img/publications/project-aurora.svg
 icon_alt: Project icon
-links:
-  - { icon: far fa-arrow-alt-circle-right, label: GitHub, url: "https://github.com/" }
-  - { icon: far fa-newspaper, label: Media Mention, url: "https://example.com", featured: true }
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Google-sponsored GenAI Hackathon at the Tepper School of Business (Mar 2024). Led a four-person team as primary developer on a Python demo of a multilingual messaging platform that lets each user chat in their preferred language. Earned an honorable mention, top 4 of 26 teams.
 
-## Music
-
-### An Original Track Title Goes Here
+### CMUapartment.com
 
 ```yaml
-url: https://example.com
-subtitle: Composition, production, or release details
-links:
-  - { icon: far fa-arrow-alt-circle-right, label: Listen, url: "https://example.com" }
-  - { icon: far fa-arrow-alt-circle-right, label: Credits, url: "https://example.com" }
+icon: img/publications/project-aurora.svg
+icon_alt: Project icon
 ```
 
-Use this entry for an original song, instrumental, remix, or collaborative release. You can describe the sound, the tools you used, the context behind the piece, or where it was performed or published.
-
-### A Release, Score, or Music Project
-
-```yaml
-url: https://example.com
-subtitle: Project notes, collaborators, or live context
-links:
-  - { icon: far fa-arrow-alt-circle-right, label: Listen, url: "https://example.com" }
-  - { icon: far fa-arrow-alt-circle-right, label: Project note, url: "https://example.com" }
-```
-
-This can be a larger body of music work, such as an EP, soundtrack, live set, or experimental audio piece. Use the description to explain the concept, process, or the role music plays in your broader creative practice.
+24-hour hackathon (Jan 2024). Led a three-person team as primary developer, building a website that helps CMU students find housing, with a ranking system that adapts to each student's priorities to give personalized recommendations.
 
 ## Blog
 
@@ -196,30 +144,8 @@ This can be a larger body of music work, such as an EP, soundtrack, live set, or
 ```yaml
 date: Mar 2025
 tag: Audio DSP
-url: blog/convolution/index.html
+url: blog/audio/posts/convolution.html
 link_label: Read post
 ```
 
-A translated version of the original Streamlit post, rebuilt as a template-blog page with the main intuition, equations, and figures behind convolution reverb.
-
-### Notes From a Project in Progress
-
-```yaml
-date: Feb 2026
-tag: Audio DSP
-url: https://example.com
-link_label: Read notes
-```
-
-This can be a lighter update format for sharing ongoing experiments, a behind-the-scenes build log, or a few lessons from something you are currently exploring.
-
-### What I’m Reading and Thinking About
-
-```yaml
-date: Nov 2025
-tag: Audio DSP
-url: https://example.com
-link_label: Open entry
-```
-
-A useful template for a reading roundup, course reflection, conference recap, or a post that gathers references and ideas you want to return to later.
+An interactive version of the original Streamlit post, covering the main intuition, equations, and figures behind convolution reverb.

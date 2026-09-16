@@ -6,7 +6,10 @@
 
 const EXT = 'target="_blank" rel="noopener noreferrer"';
 
-function chromeTop(meta) {
+function chromeTop(meta, nav) {
+  const navLinks = nav.map((n) =>
+    `                <a class="site-menu-link" href="#${n.id}">${n.label}</a>`
+  ).join('\n');
   return `<!DOCTYPE html>
 <!--
 ================================================================================
@@ -86,12 +89,7 @@ Daniel R. Jiang Webpage Design/Template
         <div class="site-menu-shell">
             <a class="site-menu-brand" href="#about-section">${meta.name}</a>
             <div class="site-menu-inner">
-                <a class="site-menu-link" href="#about-section">About</a>
-                <a class="site-menu-link" href="#education-section">Education</a>
-                <a class="site-menu-link" href="#publications-section">Research</a>
-                <a class="site-menu-link" href="#projects-section">Projects</a>
-                <a class="site-menu-link" href="#music-section">Music</a>
-                <a class="site-menu-link" href="#blog-section">Blog</a>
+${navLinks}
             </div>
         </div>
     </nav>
@@ -304,21 +302,54 @@ ${renderLinks(e.data.links)}
   return contentSection('Teaching', 'teaching-section', section.heading, '', rows);
 }
 
-function renderProjects(section) {
-  const rows = section.entries.map((e) => `                <div class="publication-row">
+// Links block for entries where links are optional.
+function optionalLinks(links) {
+  if (!links || !links.length) return '';
+  return `
+                        <p class="publication-links">
+${renderLinks(links)}
+                        </p>`;
+}
+
+function renderExperience(section) {
+  const rows = section.entries.map((e) => {
+    const org = e.data.organization_url
+      ? `<a ${EXT} href="${e.data.organization_url}">${e.data.organization}</a>`
+      : e.data.organization;
+    return `                <div class="course-row">
                     <div class="row-icon">
-                        <a ${EXT} href="${e.data.url}">
-                            <img src="${e.data.icon}" class="publication-icon" loading="lazy" alt="${e.data.icon_alt}" />
-                        </a>
+                        <h5>${e.data.label}</h5>
                     </div>
                     <div class="row-content">
-                        <p class="publication-title"><a ${EXT} href="${e.data.url}">${e.title}</a></p>
-                        <p class="publication-description">${e.description}</p>
-                        <p class="publication-links">
-${renderLinks(e.data.links)}
-                        </p>
+                        <p class="publication-title">${e.title}, <span class="journal-submitted">${org}</span></p>
+                        <p class="teaching-position">${e.data.details}</p>
+                        <p class="publication-description">${e.description}</p>${optionalLinks(e.data.links)}
                     </div>
-                </div>`).join('\n\n');
+                </div>`;
+  }).join('\n\n');
+  return contentSection('Experience', 'experience-section', section.heading, '', rows);
+}
+
+// url and links are optional: projects without a public page render unlinked.
+function renderProjects(section) {
+  const rows = section.entries.map((e) => {
+    const icon = `<img src="${e.data.icon}" class="publication-icon" loading="lazy" alt="${e.data.icon_alt}" />`;
+    const iconHtml = e.data.url
+      ? `<a ${EXT} href="${e.data.url}">
+                            ${icon}
+                        </a>`
+      : icon;
+    const title = e.data.url ? `<a ${EXT} href="${e.data.url}">${e.title}</a>` : e.title;
+    return `                <div class="publication-row">
+                    <div class="row-icon">
+                        ${iconHtml}
+                    </div>
+                    <div class="row-content">
+                        <p class="publication-title">${title}</p>
+                        <p class="publication-description">${e.description}</p>${optionalLinks(e.data.links)}
+                    </div>
+                </div>`;
+  }).join('\n\n');
   return contentSection('Projects', 'projects-section', section.heading, '', rows);
 }
 
@@ -496,6 +527,7 @@ module.exports = {
   chromeBottom,
   renderBio,
   renderEducation,
+  renderExperience,
   renderPublications,
   renderTeaching,
   renderProjects,

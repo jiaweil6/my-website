@@ -701,6 +701,11 @@
                 }
             });
 
+            // A short last section can never reach the threshold; activate it at page bottom
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+                currentId = linkMap[linkMap.length - 1].section.id;
+            }
+
             linkMap.forEach(function(item) {
                 item.link.classList.toggle('is-active', item.section.id === currentId);
             });
