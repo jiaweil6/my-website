@@ -145,7 +145,7 @@ icon: img/publications/project-aurora.svg
 icon_alt: Project icon
 ```
 
-24-hour hackathon (Jan 2024). Led a three-person team as primary developer, building a website that helps CMU students find housing, with a ranking system that adapts to each student's priorities to give personalized recommendations.
+24-hour hackathon (Jan 2024). Led a three-person team to build a website that helps CMU students find housing by ranking apartments on each student's priorities. Built the responsive front end with JavaScript, Bootstrap, and jQuery, including slider-weighted scoring, filters, and live rankings.
 
 ## Blog
 
