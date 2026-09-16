@@ -17,11 +17,11 @@ social:
 
 ## About
 
-Hey, I'm David! I'm an undergrad at Carnegie Mellon University in the BESA program in Electrical and Computer Engineering and Music Technology. As a musician, engineer, and researcher, I'm particularly interested in how advanced technology can help people become a more creative version of themselves. My engineering interests center on signal processing, especially signals sampled at 44.1 kHz. Feel free to reach out if you have any questions, or if you just want to chat!
+Hey, I'm David! I'm an undergrad at Carnegie Mellon University in the BESA program, studying Electrical and Computer Engineering and Music Technology. As a musician, engineer, and researcher, I'm particularly interested in how advanced technology can help people become a more creative version of themselves. My engineering interests center on signal processing, especially signals sampled at 44.1 kHz. Feel free to reach out if you have any questions, or if you just want to chat!
 
-Right now I'm a research intern in Prof. Chris Donahue's [G-CLef lab](https://gclef-cmu.org), a teaching assistant for Intro to Computer Music, and building a pedal-morphing guitar instrument for my BXA capstone.
+Right now I'm a research intern in Prof. Chris Donahue's [G-CLef lab](https://gclef-cmu.org), a teaching assistant for Intro to Computer Music, and I'm building a pedal-morphing guitar instrument for my BXA capstone.
 
-I'm also a sports enthusiast. Collegiate level badminton player 🏸, single digit handicap golfer ⛳, and recently a V2-4 climber 🧗. I'm always down to stay active, so definitely hit me up if you're interested!
+I'm also a sports enthusiast. Collegiate-level badminton player 🏸, single-digit handicap golfer ⛳, and recently a V2-4 climber 🧗. I'm always down to stay active, so definitely hit me up if you're interested!
 
 ### Interests
 
@@ -127,7 +127,7 @@ icon: img/publications/project-aurora.svg
 icon_alt: Project icon
 ```
 
-Final project for Twisted Signals at Carnegie Mellon University (Apr 2026). Rebuilt Piano Genie in Max 9, running the Magenta.js model through Node for Max so eight computer keys play a full piano. A JavaScript style arranger re-voices the played notes in real time as classical, jazz, or J-pop in any key and mode, feeding an 8-voice sampler (piano, violin, organ, guitar) with custom chorus, stereo delay, and reverb effects.
+Final project for Twisted Signals at Carnegie Mellon University (Apr 2026). Rebuilt Piano Genie in Max 9, running the Magenta.js model through Node for Max so eight computer keys play all 88 piano keys. A JavaScript style arranger re-voices the played notes in real time as classical, jazz, or J-pop in any key and mode, feeding an 8-voice sampler (piano, violin, organ, guitar) with custom chorus, stereo delay, and reverb effects.
 
 ### Intergram
 
