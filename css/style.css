@@ -10,7 +10,9 @@
  *
  * TYPOGRAPHY:
  *   --font-display: Serif font for headings (default: Cormorant Garamond)
- *   --font-body: Sans-serif font for body text (default: Inter)
+ *   --font-body: Serif font for body text (default: Source Serif 4)
+ *   --font-ui: Sans-serif for small functional text — labels, nav, tags,
+ *              metadata (default: Source Sans 3, Source Serif 4's sibling)
  *
  * SIZING:
  *   --max-width: Maximum content width (default: 750px)
@@ -90,7 +92,8 @@
     /* Typography */
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-display-cjk: 'Ma Shan Zheng', 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Source Serif 4', 'Times New Roman', Georgia, serif;
+    --font-ui: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --bio-font-size: clamp(0.55rem, 2.05vw, 0.9rem);
     --bio-contact-font-size: clamp(0.65rem, 2.05vw, 0.9rem);
     --bio-line-height: 1.7;
@@ -298,6 +301,7 @@ a {
 
 .site-menu-link {
     color: var(--color-nav-link);
+    font-family: var(--font-ui);
     font-size: clamp(0.68rem, 1vw, 0.8rem);
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -453,6 +457,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .bio-sidebar-label {
+    font-family: var(--font-ui);
     font-size: clamp(0.56rem, 1.45vw, 0.68rem);
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -461,6 +466,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .bio-sidebar-emphasis {
+    font-family: var(--font-ui);
     font-size: clamp(0.72rem, 1.7vw, 0.84rem);
     line-height: 1.42;
     font-weight: 500;
@@ -556,6 +562,10 @@ html[data-theme='dark'] .bio-portrait-image-dark {
     margin: 0;
 }
 
+.bio-summary p + p {
+    margin-top: 0.85em;
+}
+
 .bio-summary strong {
     font-weight: 650;
     color: var(--color-black);
@@ -575,7 +585,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .bio-detail-heading {
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: clamp(0.56rem, 1.45vw, 0.68rem);
     line-height: 1.2;
     font-weight: 600;
@@ -614,6 +624,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .bio-detail-subtitle {
+    font-family: var(--font-ui);
     font-size: clamp(0.6rem, 1.45vw, 0.72rem);
     line-height: 1.35;
     color: var(--color-copy-softer);
@@ -657,6 +668,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 /* Base Tag Style (used in .icon-tags under publication thumbnails) */
 .tag {
     display: inline-block;
+    font-family: var(--font-ui);
     font-size: var(--tag-pill-font-size);
     font-weight: 500;
     padding: var(--tag-pill-padding-v) var(--tag-pill-padding-h);
@@ -672,6 +684,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .filter-toggle {
+    font-family: var(--font-ui);
     font-size: clamp(0.5rem, 1.6vw, 0.7rem);
     font-weight: 500;
     color: var(--color-gray-light);
@@ -716,6 +729,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 
 /* Filter Tag Buttons */
 .tag-filter {
+    font-family: var(--font-ui);
     font-size: var(--tag-filter-font-size);
     font-weight: 500;
     padding: 4px 10px;
@@ -851,11 +865,11 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 
 .publication-authors,
 .teaching-position {
+    font-family: var(--font-ui);
     font-size: var(--publication-authors-font-size);
     line-height: 1.4;
     color: var(--color-gray-dark);
     margin-bottom: var(--publication-vspace);
-    padding-left: var(--space-md);
     text-wrap: auto;
 }
 
@@ -870,11 +884,11 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .publication-journal {
+    font-family: var(--font-ui);
     font-size: var(--publication-venue-font-size);
     line-height: 1.4;
     color: var(--color-black);
     margin-bottom: var(--publication-vspace);
-    padding-left: var(--space-md);
     text-wrap: auto;
 }
 
@@ -891,7 +905,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 
 /* Publication Description */
 .publication-description-wrapper {
-    padding-left: var(--space-md);
+    font-family: var(--font-ui);
     margin-bottom: var(--publication-vspace);
     font-size: var(--publication-description-font-size);
     line-height: 1.4;
@@ -912,6 +926,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .abstract-toggle {
+    font-family: var(--font-ui);
     color: var(--color-gray-light);
     cursor: pointer;
     user-select: none;
@@ -924,9 +939,9 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 
 /* Publication Links */
 .publication-links {
+    font-family: var(--font-ui);
     font-size: var(--publication-links-font-size);
     color: var(--color-gray-dark);
-    padding-left: var(--space-md);
     text-wrap: auto;
 }
 
@@ -983,6 +998,11 @@ html[data-theme='dark'] .bio-portrait-image-dark {
     border: none;
 }
 
+/* Course numbers like "15-322/622" read wrong split at the hyphen. */
+.course-row .row-icon h5 {
+    white-space: nowrap;
+}
+
 .education-list {
     display: grid;
     gap: var(--space-lg);
@@ -1025,6 +1045,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .education-degree {
+    font-family: var(--font-ui);
     font-size: clamp(0.72rem, 1.75vw, 0.84rem);
     line-height: 1.35;
     color: var(--color-gray);
@@ -1032,6 +1053,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .education-meta {
+    font-family: var(--font-ui);
     font-size: clamp(0.6rem, 1.45vw, 0.72rem);
     line-height: 1.38;
     color: var(--color-copy-softer);
@@ -1059,6 +1081,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .blog-date {
+    font-family: var(--font-ui);
     font-size: clamp(0.58rem, 1.45vw, 0.7rem);
     line-height: 1.25;
     font-weight: 600;
@@ -1097,6 +1120,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .blog-excerpt {
+    font-family: var(--font-ui);
     font-size: var(--publication-description-font-size);
     line-height: 1.5;
     color: var(--color-gray);
@@ -1112,6 +1136,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
     border-radius: 999px;
     background: rgba(var(--accent-color-r), var(--accent-color-g), var(--accent-color-b), 0.10);
     color: var(--color-accent);
+    font-family: var(--font-ui);
     font-size: clamp(0.5rem, 1.2vw, 0.64rem);
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -1121,6 +1146,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 }
 
 .blog-links {
+    font-family: var(--font-ui);
     font-size: var(--publication-links-font-size);
     line-height: 1.4;
     color: var(--color-gray-dark);
@@ -1183,7 +1209,7 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 .template-credit {
     text-align: center;
     margin: calc(var(--space-2xl) * 1.1) 0 var(--space-xl);
-    font-family: var(--font-body);
+    font-family: var(--font-ui);
     font-size: var(--publication-description-font-size);
     font-style: normal;
     color: var(--color-gray);
@@ -1256,14 +1282,19 @@ html[data-theme='dark'] .bio-portrait-image-dark {
     }
 }
 
-/* Small screens */
-@media (max-width: 576px) {
+/* Mid widths: the single-row menu spans the full viewport, so give it
+   side padding and keep the links clear of the fixed theme toggle. */
+@media (min-width: 761px) and (max-width: 1080px) {
+    .site-menu-shell {
+        padding-left: var(--space-lg);
+        padding-right: calc(38px + clamp(12px, 2vw, 28px) + 14px);
+    }
+}
+
+/* Below ~760px the single-row menu no longer fits — stack brand + links. */
+@media (max-width: 760px) {
     :root {
         --site-menu-height: 102px;
-    }
-
-    body {
-        padding: calc(var(--site-menu-height) + var(--space-lg)) var(--space-md) var(--space-lg);
     }
 
     .site-menu {
@@ -1305,6 +1336,13 @@ html[data-theme='dark'] .bio-portrait-image-dark {
         right: 12px;
         width: 34px;
         height: 34px;
+    }
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    body {
+        padding: calc(var(--site-menu-height) + var(--space-lg)) var(--space-md) var(--space-lg);
     }
 
     .bio-layout {
@@ -1417,14 +1455,6 @@ html[data-theme='dark'] .bio-portrait-image-dark {
         margin-bottom: var(--space-md);
         padding-bottom: var(--space-md);
     }
-
-    .publication-authors,
-    .teaching-position,
-    .publication-journal,
-    .publication-description-wrapper,
-    .publication-links {
-        padding-left: 8px;
-    }
 }
 
 @media (max-width: 360px) {
@@ -1484,5 +1514,59 @@ html[data-theme='dark'] .bio-portrait-image-dark {
 
     .site-menu {
         display: none !important;
+    }
+}
+
+/* ==========================================================================
+   14. Cross-document view transitions (into/out of the blog)
+   ========================================================================== */
+
+/* Same-origin navigations to pages that also opt in (the blog subsite —
+   see blog-src/_static/custom.css) morph instead of hard-cutting: the menu
+   bar and theme toggle hold still, the brand crossfades between the ink
+   "Jiawei Liu" and the blog's accent "David's Blog", the page fades up.
+   Progressive enhancement — unsupported browsers navigate normally. */
+@view-transition {
+    navigation: auto;
+}
+
+.site-menu {
+    view-transition-name: site-menu;
+}
+
+.site-menu-brand {
+    view-transition-name: site-brand;
+}
+
+.theme-toggle {
+    view-transition-name: theme-toggle;
+}
+
+::view-transition-group(site-brand) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+    animation: vt-page-out 0.2s ease both;
+}
+
+::view-transition-new(root) {
+    animation: vt-page-in 0.35s ease both;
+}
+
+@keyframes vt-page-out {
+    to { opacity: 0; }
+}
+
+@keyframes vt-page-in {
+    from { opacity: 0; transform: translateY(10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
     }
 }

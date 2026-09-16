@@ -1,0 +1,95 @@
+# Jupyter Book configuration for the David Audio blog subsite.
+# Pipeline adapted from CMU 15-322 icmbook (Jupyter Book 1.x + TeachBooks
+# sphinx-thebe fork + thebe-lite); see Makefile and _static/live-cells.js.
+
+title: Jiawei Liu
+author: "Jiawei (David) Liu"
+copyright: "2026 Jiawei Liu"
+logo: ""
+exclude_patterns: [_build, "**.ipynb_checkpoints", stubs, vendor, .venv]
+only_build_toc_files: true
+
+#######################################################################################
+# Execution settings ('auto' executes any notebook that is missing outputs)
+execute:
+  execute_notebooks: 'auto'
+  timeout: 300
+
+#######################################################################################
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - attrs_inline
+    - colon_fence
+    - deflist
+    - dollarmath
+    - smartquotes
+  myst_url_schemes: [mailto, http, https]
+
+#######################################################################################
+# HTML-specific settings
+html:
+  favicon: ""
+  home_page_in_navbar: true
+  baseurl: ""
+
+repository:
+  url: "https://github.com/jiaweil6/My_Website"
+  path_to_book: "blog-src"
+  branch: main
+
+# NOTE: no launch buttons anywhere, on purpose. live-cells.js mounts editors
+# at page load, and thebe is wired solely by sphinx.config.thebe_config below.
+
+#######################################################################################
+# Advanced and power-user settings
+sphinx:
+  # Blog-specific extension (source in _ext/, copied from icmbook):
+  #   icm_audio — the {audio} directive and role (captioned players)
+  local_extensions:
+    icm_audio: _ext/
+  config:
+    # A notebook execution error is only a warning by default, which lets a
+    # broken page deploy — fail the build instead.
+    nb_execution_raise_on_error: true
+
+    # ---- Collapsible code cells (myst-nb) ---------------------------------
+    nb_code_prompt_show: "Show setup"
+    nb_code_prompt_hide: "Hide setup"
+
+    # vendor/ holds the live-code runtime — the thebe bundles must NOT live
+    # in _static (every _static .js is auto-registered as a page script),
+    # and the service worker must sit at the subsite root for scope.
+    html_extra_path: ["vendor"]
+
+    html_theme_options:
+      use_download_button: false
+      home_page_in_toc: false
+      repository_url: https://github.com/jiaweil6/My_Website
+      repository_branch: main
+    # No left sidebar at all — the injected site menu (site-chrome.js) is
+    # the navigation; custom.css hides the sidebar container and header.
+    html_sidebars:
+      "**": []
+    # The site's fonts (same URL as the root index.html): Cormorant Garamond
+    # for headings, Source Serif 4 for body — custom.css points the theme at them.
+    html_css_files:
+      - "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap"
+    html_js_files:
+      # site-chrome first: adopts the root site's light/dark choice before
+      # anything paints, then injects the site menu + theme toggle.
+      - site-chrome.js
+      # require.js next: the TeachBooks live-code setup expects it.
+      - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+      - audio-chip.js
+      # Button-free live code: editors mount at page load, the kernel stack
+      # loads on the first Run. live-cells.css pairs with it.
+      - live-cells.js
+    thebe_config:
+      use_thebe_lite: true
+      # The extension would copy book SOURCE files into _build/html for the
+      # kernel; publish none of them (the kernel only needs the wheels). The
+      # dot patterns matter: `**` alone does NOT match dotfiles, which would
+      # publish .git/ onto the site.
+      exclude_patterns: ["**", ".*", ".*/**"]

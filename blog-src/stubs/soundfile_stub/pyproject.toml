@@ -1,0 +1,17 @@
+# Browser-only stand-in for `soundfile`, WAV-only via the stdlib. Wheeled by
+# `make wheels` and installed in the Pyodide kernel BEFORE pyquist, so
+# micropip sees the dependency as satisfied. Exists because the kernel stack
+# caps at Pyodide 0.27.x, which ships no WASM soundfile (0.28 does — delete
+# this stub when the stack gets there). Never published to PyPI.
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soundfile"
+version = "0.12.1.post901"
+description = "Browser (Pyodide/WASM) WAV-only stand-in for soundfile, for pyquist live-code pages."
+requires-python = ">=3.10"
+
+[tool.setuptools]
+py-modules = ["soundfile"]

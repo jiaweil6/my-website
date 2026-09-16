@@ -1,0 +1,6 @@
+# Table of contents for the David Audio blog subsite.
+# Add new posts here (newest first) as they are written under posts/.
+format: jb-book
+root: index
+chapters:
+  - file: posts/convolution

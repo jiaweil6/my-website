@@ -1,0 +1,22 @@
+# Build environment for the blog subsite (Python 3.11 recommended):
+#   python3.11 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#   pip install --force-reinstall --no-deps "sphinx-thebe @ git+https://github.com/TeachBooks/Sphinx-Thebe@1f3a80969622b7d63f48f05d8769f5cb933202a0"
+#
+# The force-reinstall step is MANDATORY: upstream sphinx-thebe ships the same
+# dist name and version as the TeachBooks fork, so pip silently keeps
+# upstream otherwise — the build would succeed but live cells break in the
+# browser. `make check-thebe-fork` guards this.
+
+# Pin to the 1.x line: this book uses the classic Sphinx-based config
+# (_config.yml / _toc.yml). Jupyter Book 2.x uses a different format.
+jupyter-book<2
+jupytext
+# Needed by the fork's copy_over_files but not declared in its metadata.
+wcmatch
+# The audio library posts are written against; pulls numpy, matplotlib,
+# soundfile, sounddevice, soxr, etc. Pinned to the browser-recording branch —
+# the PyPI 0.1.0 release still depends on resampy, which has no WASM wheel.
+# Keep in sync with PYQUIST_PIN in the Makefile.
+pyquist @ git+https://github.com/gclef-cmu/pyquist@4193e0651175f258846fa58751ca332e56f90f15
+ipykernel

@@ -1,0 +1,1492 @@
+/* ======================================================================
+   David Audio — blog subsite of jiaweil6.github.io/My_Website.
+   Theme styling layered on the Sphinx Book Theme (pydata-sphinx-theme),
+   forked from the CMU icmbook stylesheet; the palette and typography
+   mirror the root site's css/style.css. Variable NAMES are kept from the
+   fork (--cmu-*, --icm-*) so the structural rules and live-cells.css
+   still resolve — their VALUES are the site's design tokens.
+
+   Rule: never hard-code a background or text color on shared page
+   elements — define light/dark values per theme below so both modes
+   stay legible.
+   ====================================================================== */
+
+/* ---- Site brand palette (mirrors ../../css/style.css) ----------------- */
+:root {
+  --cmu-red:        #8e2d1e;  /* site accent, light — rgb(142 45 30)     */
+  --cmu-red-dark:   #71241a;  /* hover / pressed                         */
+  --cmu-red-bright: #f4ac7f;  /* site accent, dark — rgb(244 172 127)    */
+  --cmu-gold:       #3c8c50;  /* site highlight green — rgb(60 140 80)   */
+  --cmu-iron:       #666666;  /* site --color-gray                       */
+  --cmu-teal:       #008996;  /* unused (sphinx-exercise leftover)       */
+  --cmu-teal-bright:#3fb6c2;
+
+  /* Typography — display serif for headings, body serif for prose,
+     sans for small functional text (nav, labels, toggles). */
+  --icm-serif: 'Cormorant Garamond', Georgia, serif;
+  --icm-body: 'Source Serif 4', 'Times New Roman', Georgia, serif;
+  --icm-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Point the theme's own font variables at the site stack so every
+     surface (header, sidebars, search) follows without per-rule overrides. */
+  --pst-font-family-base: var(--icm-body);
+  --pst-font-family-heading: var(--icm-serif);
+  /* Theme variables, so they size both the left and right menus. */
+  --pst-sidebar-font-size: 0.85rem;
+  --pst-sidebar-font-size-mobile: 0.85rem;
+
+  /* Okabe-Ito accents for inline colored text (same in both themes) */
+  --icm-c-blue:   #0072B2;
+  --icm-c-green:  #009E73;
+  --icm-c-orange: #D55E00;
+  --icm-c-pink:   #CC79A7;
+  --icm-c-gray:   #6D6E71;
+}
+
+/* ---- Light mode (site: warm cream paper, rust accent) ----------------- */
+html[data-theme="light"] {
+  --pst-color-background:  #f8f2eb;            /* site --color-page-background */
+  --pst-color-on-background: #fcf8f2;          /* site --color-surface-raised */
+  --pst-color-surface:     #fcf8f2;
+  --pst-color-text-base:   #292929;            /* site --color-copy */
+  --pst-color-text-muted:  #8d8d8d;            /* site --color-copy-softer */
+  --pst-color-border:      #e5dccf;
+  --pst-color-border-muted:#ece4d9;
+
+  --pst-color-primary:     var(--cmu-red);
+  --pst-color-link:        var(--cmu-red);
+  --pst-color-link-hover:  var(--cmu-red-dark);
+  --pst-color-inline-code: var(--cmu-red-dark);
+  --pst-color-accent:      var(--cmu-gold);
+
+  --icm-accent:    var(--cmu-red);
+  --icm-accent-2:  var(--cmu-gold);
+  --icm-accent-3:  var(--cmu-iron);
+  --icm-accent-tint: rgba(142, 45, 30, 0.08); /* hover wash behind accent icons */
+  --icm-box-bg:      #fcf8f2;                 /* site --color-surface-raised */
+  --icm-box-border:  #e5dccf;
+  --icm-title-bg:    rgba(142, 45, 30, 0.08);
+  --icm-title-bg-2:  rgba(60, 140, 80, 0.14);
+  --icm-title-bg-3:  rgba(102, 102, 102, 0.10);
+  --icm-ex-bg:       #f3ece3;
+  --live-code-bg:    #f2ebe1;   /* code-cell panel (collapsed hide-input bar) */
+  --icm-sched-head-bg: rgba(109, 110, 113, 0.25);  /* darker than the week bands */
+  --icm-sched-band-bg: rgba(109, 110, 113, 0.17);  /* week bands: above the row tints */
+  /* Schedule row tints — Okabe-Ito hues as backgrounds (validated
+     colorblind-safe as a set, all pairs) */
+  --icm-row-blue:   rgba(0, 114, 178, 0.13);
+  --icm-row-green:  rgba(0, 158, 115, 0.13);
+  --icm-row-orange: rgba(213, 94, 0, 0.13);
+  --icm-row-pink:   rgba(204, 121, 167, 0.16);
+  --icm-row-gray:   rgba(109, 110, 113, 0.13);
+}
+
+/* ---- Dark mode (site: deep blue-slate, peach accent) ------------------ */
+html[data-theme="dark"] {
+  --pst-color-background:  #10161a;            /* site --color-page-background */
+
+  --pst-color-primary:     var(--cmu-red-bright);
+  --pst-color-link:        var(--cmu-red-bright);
+  --pst-color-link-hover:  #f8c7a4;
+  --pst-color-inline-code: #f0bd98;
+  --pst-color-accent:      #6cb685;             /* site highlight green, dark */
+
+  /* Site dark surfaces (css/style.css html[data-theme='dark']). */
+  --pst-color-text-base:          #d8d0c5;   /* site --color-copy */
+  --pst-color-text-muted:         #97a1a8;   /* site --color-copy-softer */
+  --pst-color-blockquote-notch:   #97a1a8;
+  --pst-color-surface:            #171f24;   /* site --color-surface-raised */
+  --pst-color-on-background:      #171f24;
+  --pst-color-border:             #2b353b;   /* site --color-gray-pale */
+  --pst-color-border-muted:       #232c31;
+  --pst-color-table-inner-border: #2b353b;
+  --pst-color-table-row-hover-bg: #232c31;
+  --pst-color-target:             #2e3d33;   /* dim green */
+
+  --icm-accent:    var(--cmu-red-bright);
+  --icm-accent-2:  #6cb685;
+  --icm-accent-3:  #9ea8af;   /* site --color-gray, dark */
+  --icm-accent-tint: rgba(244, 172, 127, 0.12); /* hover wash behind accent icons */
+  --icm-box-bg:      #171f24;
+  --icm-box-border:  #2b353b;
+  --icm-title-bg:    rgba(244, 172, 127, 0.14);
+  --icm-title-bg-2:  rgba(108, 182, 133, 0.14);
+  --icm-title-bg-3:  rgba(158, 168, 175, 0.14);
+  --icm-ex-bg:       #1a2227;
+  --live-code-bg:    #1c242a;   /* code-cell panel (collapsed hide-input bar) */
+  --icm-sched-head-bg: rgba(163, 164, 167, 0.28);  /* stronger than the week bands */
+  --icm-sched-band-bg: rgba(163, 164, 167, 0.20);  /* week bands: above the row tints */
+  /* Schedule row tints — brightened hues (validated, all pairs) */
+  --icm-row-blue:   rgba(86, 180, 233, 0.24);
+  --icm-row-green:  rgba(0, 199, 149, 0.19);
+  --icm-row-orange: rgba(240, 130, 50, 0.21);
+  --icm-row-pink:   rgba(228, 147, 192, 0.21);
+  --icm-row-gray:   rgba(163, 164, 167, 0.19);
+}
+
+/* ---- Typography: the site pairing — Source Serif 4 body, Cormorant headings ---- */
+.bd-article {
+  font-family: var(--icm-body);
+}
+.bd-article h1, .bd-article h2, .bd-article h3,
+.bd-article h4, .bd-article h5, .bd-article h6 {
+  font-family: var(--icm-serif);
+  font-weight: 500;              /* site h1–h6 weight */
+  letter-spacing: -0.01em;
+  color: var(--pst-color-text-base);
+  line-height: 1.2;
+}
+
+/* Cormorant runs small for its em box; step headings up so the hierarchy
+   reads at the same visual size as the root site's. */
+.bd-article h1 { font-size: 2.7rem; }
+.bd-article h2 { font-size: 1.9rem; }
+.bd-article h3 { font-size: 1.45rem; }
+
+/* ---- Headings: quiet ink with a thin rule, like the site's sections --- */
+.bd-article h1 {
+  border-bottom: 1px solid var(--icm-box-border);
+  padding-bottom: 0.3rem;
+}
+
+.bd-article h2 {
+  border-bottom: 1px solid var(--icm-box-border);
+  padding-bottom: 0.2rem;
+}
+
+/* A heading whose text is inline code (e.g. `# `pyquist` `) should read at
+   heading size; the theme's small body-code metric would shrink it. */
+.bd-article h1 code,
+.bd-article h2 code,
+.bd-article h3 code,
+.bd-article h4 code,
+.bd-article h5 code,
+.bd-article h6 code {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ======================================================================
+   SITE CHROME — blog pages share the site's look but wear a pared-down
+   masthead: accent-colored "David's Blog" brand + a single About link.
+   The Sphinx header/sidebar/footer chrome is hidden; site-chrome.js
+   injects the masthead and floating theme toggle (rules below mirror
+   css/style.css so the bar itself is pixel-identical to the site's).
+   ====================================================================== */
+
+/* Tokens the copied menu rules use, valued from the site stylesheet. */
+:root {
+  --font-display: var(--icm-serif);
+  --max-width: 900px;
+  --site-menu-height: 68px;
+  --transition-fast: 0.2s ease;
+}
+html[data-theme="light"] {
+  --color-black:               #121212;
+  --color-nav-link:            #626262;
+  --color-accent:              var(--cmu-red);
+  --color-menu-background:     rgba(252, 248, 242, 0.95);
+  --color-menu-border-strong:  rgba(18, 18, 18, 0.14);
+  --color-menu-border-soft:    rgba(18, 18, 18, 0.10);
+  --color-surface-overlay:     rgba(252, 248, 242, 0.78);
+  --color-surface-overlay-hover: rgba(255, 252, 247, 0.96);
+  --color-floating-shadow:     0 8px 22px rgba(18, 18, 18, 0.08);
+}
+html[data-theme="dark"] {
+  --color-black:               #f4eee6;
+  --color-nav-link:            #a0abb3;
+  --color-accent:              var(--cmu-red-bright);
+  --color-menu-background:     rgba(18, 24, 29, 0.93);
+  --color-menu-border-strong:  rgba(244, 238, 230, 0.14);
+  --color-menu-border-soft:    rgba(244, 238, 230, 0.08);
+  --color-surface-overlay:     rgba(23, 31, 36, 0.82);
+  --color-surface-overlay-hover: rgba(28, 38, 43, 0.96);
+  --color-floating-shadow:     0 12px 28px rgba(0, 0, 0, 0.30);
+}
+
+/* Hide the book theme's own chrome: top/article header bars (hamburger,
+   fullscreen, its theme switch), the left sidebar (nav + search), the
+   prev/next bar, and the "Powered by" footer. */
+.bd-header,
+.bd-header-article,
+.bd-sidebar-primary,
+.prev-next-area,
+footer.bd-footer,
+footer.bd-footer-content,
+.bd-footer {
+  display: none !important;
+}
+
+/* Single centered article column at the site's content width, clear of the
+   fixed menu. */
+.bd-main .bd-content {
+  justify-content: center;
+}
+.bd-main .bd-content .bd-article-container {
+  max-width: var(--max-width);
+  padding: calc(var(--site-menu-height) + 2.2rem) clamp(16px, 4vw, 24px) 4rem;
+}
+html {
+  scroll-padding-top: calc(var(--site-menu-height) + 8px);
+}
+
+/* The in-page "Contents" rail stays (useful on long posts) — floated on
+   the far right, outside normal flow, so the article column centers on the
+   page exactly like the home page. Shown only when there's room beside the
+   900px column. */
+.bd-main .bd-content .bd-sidebar-secondary {
+  display: none !important;
+}
+@media (min-width: 1380px) {
+  .bd-main .bd-content .bd-sidebar-secondary {
+    display: block !important;
+    position: fixed !important;
+    right: clamp(12px, 2vw, 28px);
+    left: auto !important;
+    top: calc(var(--site-menu-height) + 60px);
+    width: 15rem;
+    max-height: calc(100vh - var(--site-menu-height) - 90px);
+    overflow-y: auto;
+    background: transparent;
+  }
+}
+
+/* ---- The site's fixed top menu (mirrors css/style.css .site-menu) ----- */
+.site-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1100;
+  background: var(--color-menu-background);
+  border-top: 1px solid var(--color-menu-border-strong);
+  border-bottom: 1px solid var(--color-menu-border-soft);
+  backdrop-filter: saturate(120%) blur(8px);
+  -webkit-backdrop-filter: saturate(120%) blur(8px);
+}
+.site-menu-shell {
+  max-width: var(--max-width);
+  min-height: var(--site-menu-height);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 24px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+}
+/* The brand wears the accent here (the site's is ink) — the color shift
+   is the "you've stepped into the blog" cue, and the view transition
+   below animates it on the way in. */
+.site-menu-brand {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.site-menu-brand:hover,
+.site-menu-brand:focus-visible {
+  color: var(--color-black);
+}
+.site-menu-inner {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: clamp(14px, 2vw, 28px);
+  /* Leave room for the floating theme toggle on the right. */
+  padding-right: 46px;
+}
+.site-menu-link {
+  color: var(--color-nav-link);
+  font-family: var(--icm-sans);
+  font-size: clamp(0.68rem, 1vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  text-decoration: none;
+}
+.site-menu-link:hover,
+.site-menu-link:focus-visible {
+  color: var(--color-accent);
+}
+
+/* ---- The site's floating theme toggle (mirrors .theme-toggle) --------- */
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  position: fixed;
+  top: 15px;
+  right: clamp(12px, 2vw, 28px);
+  z-index: 1150;
+  border: 1px solid var(--color-menu-border-soft);
+  border-radius: 999px;
+  background: var(--color-surface-overlay);
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: var(--color-floating-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform var(--transition-fast),
+              background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: var(--color-surface-overlay-hover);
+  border-color: var(--color-menu-border-strong);
+  color: var(--color-black);
+  transform: translateY(-1px);
+}
+
+/* ---- Cross-document view transitions (mirrors css/style.css §14) ------
+   Same-origin navigations home <-> blog morph instead of hard-cutting:
+   the bar and toggle hold still, the brand crossfades "Jiawei Liu" (ink)
+   into "David's Blog" (accent), the article fades up. Names must match
+   the root stylesheet's. Progressive enhancement — browsers without the
+   API just navigate normally. */
+@view-transition {
+  navigation: auto;
+}
+.site-menu {
+  view-transition-name: site-menu;
+}
+.site-menu-brand {
+  view-transition-name: site-brand;
+}
+.theme-toggle {
+  view-transition-name: theme-toggle;
+}
+::view-transition-group(site-brand) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+::view-transition-old(root) {
+  animation: vt-page-out 0.2s ease both;
+}
+::view-transition-new(root) {
+  animation: vt-page-in 0.35s ease both;
+}
+@keyframes vt-page-out {
+  to { opacity: 0; }
+}
+@keyframes vt-page-in {
+  from { opacity: 0; transform: translateY(10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ---- Static code blocks on the warm panel tone ------------------------
+   The theme's pygments sheets pin cool grays (#f3f4f5 / #2b2b2b); re-anchor
+   the panel to the site temperature. live-cells.css --cm-bg matches, so
+   mounted editors stay pixel-identical to the static blocks. */
+.bd-article div.highlight,
+.bd-article .cell .cell_input div.highlight {
+  background: var(--live-code-bg);
+}
+
+/* ======================================================================
+   Callout boxes — exercises, solutions, proofs, theorems, definitions.
+   Rebrand sphinx-exercise / sphinx-proof (which ship a fixed blue accent)
+   in Carnegie colors with theme-aware backgrounds. `!important` only to
+   win against the extension CSS.
+   ====================================================================== */
+.proof.admonition {
+  background-color: var(--icm-box-bg) !important;
+  border-color: var(--icm-box-border) !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+
+/* Exercises and solutions follow the standard admonition recipe (light fill
+   → mid title → dark spine) in iron gray, so they sit alongside note/tip
+   rather than reading as a separate cream box. */
+.exercise.admonition,
+.solution.admonition {
+  background-color: var(--icm-ex-bg) !important;
+  border-color: var(--icm-accent-3) !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+
+/* Exercises: iron gray — proofs/theorems: gold — solutions: iron gray */
+.exercise.admonition  { border-left: 0.35rem solid var(--icm-accent-3) !important; }
+.proof.admonition     { border-left: 0.35rem solid var(--icm-accent-2) !important; }
+.solution.admonition  { border-left: 0.35rem solid var(--cmu-iron)     !important; }
+
+.exercise.admonition  > .admonition-title {
+  background-color: var(--icm-title-bg-3) !important;
+}
+.proof.admonition     > .admonition-title {
+  background-color: var(--icm-title-bg-2) !important;
+}
+.solution.admonition  > .admonition-title {
+  background-color: var(--pst-color-surface) !important;
+}
+
+/* Recolor the exercise title's pencil glyph (rendered blue by the
+   extension) to match the box accent. */
+.exercise.admonition  > .admonition-title::after {
+  color: var(--icm-accent-3) !important;
+}
+
+/* Hide the auto "Definition N" / "Exercise N" counters — every directive
+   here has a meaningful name, so the number is just noise. */
+.proof.admonition    > .admonition-title .caption-number,
+.exercise.admonition > .admonition-title .caption-number,
+.solution.admonition > .admonition-title .caption-number {
+  display: none;
+}
+
+/* ----------------------------------------------------------------------
+   Standard MyST admonitions (note / tip / important / warning / seealso).
+   One recipe — pastel fill, deeper title band, saturated spine — in a
+   distinct hue per type, with dark-mode tints of the same hues. Colors
+   are custom properties so the rules below are written once.
+   ---------------------------------------------------------------------- */
+html[data-theme="light"] {
+  --ad-note-bg:   #eaf0f6;  --ad-note-title:   #dde7f0;  --ad-note-spine:   #6a8aab;
+  --ad-tip-bg:    #ecf3e6;  --ad-tip-title:    #dde9d3;  --ad-tip-spine:    #6f9a5e;
+  --ad-imp-bg:    #f6e8ea;  --ad-imp-title:    #efd6da;  --ad-imp-spine:    #c41230;
+  --ad-warn-bg:   #fbe8e2;  --ad-warn-title:   #f4d3c9;  --ad-warn-spine:   #d6402a;
+  --ad-see-bg:    #efeaf3;  --ad-see-title:    #e3dbeb;  --ad-see-spine:    #8773a3;
+}
+html[data-theme="dark"] {
+  --ad-note-bg:   #1b2630;  --ad-note-title:   #22303e;  --ad-note-spine:   #7ea0c0;
+  --ad-tip-bg:    #1f271c;  --ad-tip-title:    #273323;  --ad-tip-spine:    #86b075;
+  --ad-imp-bg:    #2f2021;  --ad-imp-title:    #3d282a;  --ad-imp-spine:    #e8546a;
+  --ad-warn-bg:   #2f201d;  --ad-warn-title:   #3d2924;  --ad-warn-spine:   #ef6a4d;
+  --ad-see-bg:    #27222e;  --ad-see-title:    #322b3c;  --ad-see-spine:    #a895c0;
+}
+
+.admonition.note      { --ad-bg: var(--ad-note-bg); --ad-title: var(--ad-note-title); --ad-spine: var(--ad-note-spine); }
+.admonition.tip,
+.admonition.hint      { --ad-bg: var(--ad-tip-bg);  --ad-title: var(--ad-tip-title);  --ad-spine: var(--ad-tip-spine); }
+.admonition.important { --ad-bg: var(--ad-imp-bg);  --ad-title: var(--ad-imp-title);  --ad-spine: var(--ad-imp-spine); }
+.admonition.warning   { --ad-bg: var(--ad-warn-bg); --ad-title: var(--ad-warn-title); --ad-spine: var(--ad-warn-spine); }
+.admonition.seealso   { --ad-bg: var(--ad-see-bg);  --ad-title: var(--ad-see-title);  --ad-spine: var(--ad-see-spine); }
+
+.admonition.note,
+.admonition.tip,
+.admonition.hint,
+.admonition.important,
+.admonition.warning,
+.admonition.seealso {
+  background-color: var(--ad-bg) !important;
+  border-color: var(--ad-spine) !important;
+  border-left: 0.35rem solid var(--ad-spine) !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+
+.admonition.note      > .admonition-title,
+.admonition.tip       > .admonition-title,
+.admonition.hint      > .admonition-title,
+.admonition.important > .admonition-title,
+.admonition.warning   > .admonition-title,
+.admonition.seealso   > .admonition-title {
+  background-color: var(--ad-title) !important;
+  color: var(--pst-color-text-base);
+}
+
+/* Recolor the theme's auto-injected title glyph to match each spine. */
+.admonition.note      > .admonition-title::after,
+.admonition.tip       > .admonition-title::after,
+.admonition.hint      > .admonition-title::after,
+.admonition.important > .admonition-title::after,
+.admonition.warning   > .admonition-title::after,
+.admonition.seealso   > .admonition-title::after {
+  color: var(--ad-spine) !important;
+}
+
+/* ---- Code cells: subtle iron-gray spine, theme keeps the background -- */
+div.cell div.cell_input {
+  border: 1px solid var(--icm-box-border);
+  border-left: 0.25rem solid var(--cmu-iron);
+  border-radius: 4px;
+}
+/* In dark mode myst-nb paints the input card #505050 while the code surface
+   inside is #2b2b2b — a grey ring around every block. Unify them; the
+   mounted editors' --cm-bg (live-cells.css) matches too. */
+html[data-theme="dark"] div.cell div.cell_input {
+  background-color: var(--live-code-bg);
+}
+
+/* ---- Code cell outputs --------------------------------------------------
+   Everything a cell prints sits in a clean block beneath its input card,
+   introduced by a whisper-small OUTPUT tag. The same rules style outputs
+   baked at build time and live results (live-cells.js relocates those into
+   an identical .cell_output container). */
+div.cell div.cell_output {
+  /* !important: the TeachBooks code.css forces margin-top and a bordered
+     .output.stream, both with !important. */
+  margin: 0.5rem 0 1.6rem !important;
+  padding: 0;
+}
+/* The OUTPUT tag, on its own quiet header row above the results. */
+div.cell div.cell_output::before {
+  content: "output";
+  display: block;
+  margin: 0 0 0.4rem;
+  font-family: var(--icm-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--icm-accent-3);
+}
+
+/* Output text keeps the input's code metrics but no box chrome of its own
+   (the theme's bordered .highlight box would read like a disabled input);
+   a bounded height stops a runaway print from swallowing the page. */
+div.cell div.cell_output .output,
+div.cell div.cell_output .highlight {
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
+}
+div.cell div.cell_output pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  line-height: 1.45;
+  max-height: 28em;
+  overflow: auto;
+}
+
+/* Breathing room between one cell's consecutive outputs, in both the baked
+   and the live DOM shape. */
+div.cell div.cell_output .output + .output,
+div.cell div.cell_output .jp-OutputArea-child + .jp-OutputArea-child {
+  margin-top: 0.55rem !important;
+}
+
+/* Plots: block-level, capped to the rail width. Figures are saved with
+   transparent backgrounds, so they sit directly on the page. */
+div.cell div.cell_output img {
+  display: block;
+  max-width: 100%;
+  margin: 0.4rem 0;
+}
+
+/* ----------------------------------------------------------------------
+   Collapsible code cells (`hide-input`).
+   The theme dresses the <details> as an admonition (white card, blue
+   spine, banner). Strip that chrome so, expanded, it IS a regular code
+   cell preceded by a slim toggle. The label text is set in _config.yml
+   (nb_code_prompt_show / nb_code_prompt_hide).
+   ---------------------------------------------------------------------- */
+div.cell details.hide {
+  margin: 0;                    /* the enclosing .cell carries the outer margin */
+  padding: 0 !important;        /* was the admonition's 0 0.6rem 0.8rem */
+  border: 0 !important;         /* was a 3px blue admonition spine */
+  border-radius: 0 !important;
+  background: none !important;  /* was an opaque white card (wrong in dark mode) */
+  box-shadow: none !important;  /* was the admonition drop shadow */
+}
+
+/* The toggle: a small, muted control with its own disclosure triangle. */
+div.cell details.hide > summary {
+  /* !important: myst-nb forces `display: block` here; without flex the
+     ::before chevron becomes an inline box and collapses to a sliver. */
+  display: flex !important;
+  align-items: center;
+  gap: 0.4em;
+  width: fit-content;
+  margin: 0 !important;
+  padding: 0.1rem 0 !important;
+  border: 0 !important;
+  background: none !important;
+  list-style: none;             /* suppress the default marker; we draw our own */
+  font-family: var(--icm-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--icm-accent-3);   /* iron gray — same neutral as the cell spine */
+  cursor: pointer;
+}
+div.cell details.hide[open] > summary {
+  margin-bottom: 0.5rem !important;   /* breathing room above the revealed cell */
+}
+div.cell details.hide > summary::-webkit-details-marker { display: none; }
+div.cell details.hide > summary:hover {
+  color: var(--pst-color-primary);
+}
+/* A clean chevron (echoing the sidebar nav's): right when collapsed, down
+   when open. */
+div.cell details.hide > summary::before {
+  content: "";
+  flex: none;
+  width: 0.4em;
+  height: 0.4em;
+  margin: 0 0.05em;
+  border-right: 0.11em solid currentColor;
+  border-bottom: 0.11em solid currentColor;
+  transform: translateY(-0.1em) rotate(-45deg);   /* › */
+  transition: transform 0.15s ease;
+}
+div.cell details.hide[open] > summary::before {
+  transform: translateY(-0.05em) rotate(45deg);    /* ⌄ */
+}
+/* The label text (Show… / Hide…) sits inline beside the triangle. */
+div.cell details.hide > summary > p.admonition-title {
+  display: inline;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* Collapsed, the toggle reads as a slim code block — the same panel,
+   border, and iron spine as a real .cell_input — so it stands in for the
+   cell it hides. The spine recolors with run state via live-cells.css. */
+div.cell details.hide:not([open]) > summary {
+  width: auto;
+  padding: 0.45rem 0.8rem !important;
+  background: var(--live-code-bg) !important;
+  border: 1px solid var(--icm-box-border) !important;
+  border-left: 0.25rem solid var(--cmu-iron) !important;
+  border-radius: 4px !important;
+}
+
+/* ======================================================================
+   Colored-math macros (\blue{}, \red{}, ... defined in _config.yml).
+   Each color has a light- and a dark-mode value so highlighted terms in
+   equations stay readable against either background.
+   ====================================================================== */
+html[data-theme="light"] {
+  --m-blue:#0271ae;   --m-red:#dc2830;     --m-orange:#f2aa00;
+  --m-purple:#633b87; --m-green:#007d4d;   --m-dkorange:#fa902d;
+  --m-cyan:#007d80;   --m-magenta:#c20caa; --m-yellow:#b89b00;
+  --m-peagreen:#00a69d; --m-darkblue:#444f95; --m-darkorange:#f16232;
+}
+html[data-theme="dark"] {
+  --m-blue:#5cb8e6;   --m-red:#ff6b78;     --m-orange:#ffc34d;
+  --m-purple:#b39ddb; --m-green:#5cc99a;   --m-dkorange:#ffab5e;
+  --m-cyan:#4fc3c5;   --m-magenta:#ef79da; --m-yellow:#f7e43c;
+  --m-peagreen:#5fd3ca; --m-darkblue:#9aa3e0; --m-darkorange:#ff8a5e;
+}
+.blue      { color: var(--m-blue); }
+.red       { color: var(--m-red); }
+.orange    { color: var(--m-orange); }
+.purple    { color: var(--m-purple); }
+.green     { color: var(--m-green); }
+.dkorange  { color: var(--m-dkorange); }
+.cyan      { color: var(--m-cyan); }
+.magenta   { color: var(--m-magenta); }
+.yellow    { color: var(--m-yellow); }
+.peagreen  { color: var(--m-peagreen); }
+.darkblue  { color: var(--m-darkblue); }
+.darkorange{ color: var(--m-darkorange); }
+
+/* ======================================================================
+   Auto-generated API reference (sphinx.ext.autodoc).
+   Give the Pyquist reference entries the book's Carnegie Red / Palatino
+   feel, reusing the theme-aware box variables so dark mode stays legible.
+   ====================================================================== */
+
+/* Each function/class/method entry: a soft card with a Carnegie Red spine. */
+.bd-article dl.py {
+  background-color: var(--icm-box-bg);
+  border: 1px solid var(--icm-box-border);
+  border-left: 0.35rem solid var(--icm-accent);
+  border-radius: 4px;
+  padding: 0.65rem 1rem 0.25rem;
+  margin: 1rem 0 1.25rem;
+}
+
+/* Nested entries (methods inside a class) don't stack the card style —
+   just a thin separator, so the class card still reads as one. */
+.bd-article dl.py dl.py {
+  background-color: transparent;
+  border: 0;
+  border-top: 1px dashed var(--icm-box-border);
+  border-radius: 0;
+  padding: 0.4rem 0 0;
+  margin: 0.6rem 0 0;
+}
+
+/* The signature line: monospace, with the symbol name lifted in red. */
+.bd-article dl.py > dt.sig,
+.bd-article dl.py > dt {
+  font-family: var(--pst-font-family-monospace, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.95rem;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  hyphens: none;
+}
+
+.bd-article dl.py > dt .sig-name,
+.bd-article dl.py > dt .pre.sig-name {
+  color: var(--pst-color-primary);
+  font-weight: 600;
+}
+
+/* "class", "property", "static", etc. labels before the signature. */
+.bd-article dl.py > dt .property {
+  color: var(--pst-color-accent);
+  font-style: italic;
+  font-weight: 600;
+  margin-right: 0.35em;
+}
+
+/* Entry bodies in the article's body face. */
+.bd-article dl.py > dd {
+  font-family: var(--icm-body);
+  margin-top: 0.45rem;
+}
+
+/* Don't justify autodoc paragraphs — the narrow param column looks ragged. */
+.bd-article dl.py > dd p,
+.bd-article dl.py > dd li {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* Same for table cells — justified text in narrow columns leaves gaps. */
+.bd-article table td p,
+.bd-article table td li,
+.bd-article table th p,
+.bd-article table th li {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* Week-band schedule table: a tinted full-width row starts each week and
+   the days sit under it — no zebra, hairlines between days, column lines
+   between cells (but not through the bands). A band row is one whose Date
+   cell is a bare bold ("**Week 2**"); deadline dates never match because
+   their bold sits inside a color span. */
+.bd-article table.sched-table {
+  font-size: 0.9em;
+  /* the theme frames tables in surface gray; recolor it to match the
+     hairlines inside */
+  border: 1px solid var(--icm-box-border);
+  --pst-color-table-row-zebra-low-bg: transparent;
+  --pst-color-table-row-zebra-high-bg: transparent;
+  --pst-color-table-heading-bg: var(--icm-sched-head-bg);
+}
+.bd-article table.sched-table th,
+.bd-article table.sched-table td {
+  border: 0;
+  padding: 0.4rem 0.9rem 0.4rem 0.5rem;
+}
+.bd-article table.sched-table th ~ th,
+.bd-article table.sched-table td ~ td {
+  border-left: 1px solid var(--icm-box-border);
+}
+.bd-article table.sched-table td {
+  /* inset shadow, not a border: at a shared edge border-collapse keeps only
+     the widest border, so the bands' thick gap border would swallow a real
+     border-bottom and leave each week block open at the bottom */
+  box-shadow: inset 0 -1px 0 0 var(--icm-box-border);
+}
+/* The table frame closes the last row — no shadow, or the edge doubles. */
+.bd-article table.sched-table tbody tr:last-child > td {
+  box-shadow: none;
+}
+.bd-article table.sched-table td:nth-child(1),
+.bd-article table.sched-table td:nth-child(3) {
+  white-space: nowrap;
+}
+.bd-article table.sched-table tr:has(> td:first-child > p > strong) > td {
+  background: var(--icm-sched-band-bg);
+  /* the page-colored border is a gap: weeks chunk into visible blocks */
+  border-top: 1rem solid var(--pst-color-background);
+  border-left: 0;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+/* No gap on the first band — its thick border would swallow the header's
+   red rule (widest border wins under border-collapse). */
+.bd-article table.sched-table tbody tr:first-child > td {
+  border-top: 0;
+}
+/* The band label reads as a section header, not a data row. */
+.bd-article table.sched-table tr:has(> td:first-child > p > strong) td:first-child strong {
+  text-transform: uppercase;
+  font-size: 0.82em;
+  letter-spacing: 0.08em;
+}
+/* Anchor stubs the {schedule} directive emits so the weeks appear in the
+   right-hand "On this page" menu; sched-toc.js moves their ids onto the
+   band rows, so the stubs themselves never render. */
+.bd-article section.sched-anchor {
+  display: none;
+}
+.bd-article table.sched-table tr {
+  scroll-margin-top: 4rem;
+}
+
+/* Inline colored text — attrs_inline spans/links: [text]{.c-blue}.
+   The :hover keeps classed links from snapping back to the theme color. */
+.bd-article .c-blue,   .bd-article a.c-blue:hover   { color: var(--icm-c-blue); }
+.bd-article .c-green,  .bd-article a.c-green:hover  { color: var(--icm-c-green); }
+.bd-article .c-orange, .bd-article a.c-orange:hover { color: var(--icm-c-orange); }
+.bd-article .c-pink,   .bd-article a.c-pink:hover   { color: var(--icm-c-pink); }
+.bd-article .c-gray,   .bd-article a.c-gray:hover   { color: var(--icm-c-gray); }
+
+/* On the schedule page a color class marks a row's CATEGORY, not text color:
+   the row gets a tinted background, the text returns to normal, and links
+   look like ordinary site links. Breaks (c-gray) keep muted text and no tint
+   so they don't read as week bands. */
+.bd-article table.sched-table tr:has(.c-blue) > td   { background: var(--icm-row-blue); }
+.bd-article table.sched-table tr:has(.c-green) > td  { background: var(--icm-row-green); }
+.bd-article table.sched-table tr:has(.c-orange) > td { background: var(--icm-row-orange); }
+.bd-article table.sched-table tr:has(.c-pink) > td   { background: var(--icm-row-pink); }
+
+.bd-article .sched-table .c-blue,
+.bd-article .sched-table .c-green,
+.bd-article .sched-table .c-orange,
+.bd-article .sched-table .c-pink {
+  color: inherit;
+}
+.bd-article .sched-table a.c-blue,
+.bd-article .sched-table a.c-green,
+.bd-article .sched-table a.c-orange,
+.bd-article .sched-table a.c-pink {
+  color: var(--pst-color-link);
+}
+.bd-article .sched-table a.c-blue:hover,
+.bd-article .sched-table a.c-green:hover,
+.bd-article .sched-table a.c-orange:hover,
+.bd-article .sched-table a.c-pink:hover {
+  color: var(--pst-color-link-hover);
+}
+
+/* Highlighter chips — :{blue-highlight}[text]: the schedule row tints as
+   inline swatches, usable anywhere. */
+.bd-article .c-blue-highlight,
+.bd-article .c-green-highlight,
+.bd-article .c-orange-highlight,
+.bd-article .c-pink-highlight,
+.bd-article .c-gray-highlight {
+  color: inherit;
+  padding: 0.05em 0.45em;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.bd-article .c-blue-highlight   { background: var(--icm-row-blue); }
+.bd-article .c-green-highlight  { background: var(--icm-row-green); }
+.bd-article .c-orange-highlight { background: var(--icm-row-orange); }
+.bd-article .c-pink-highlight   { background: var(--icm-row-pink); }
+.bd-article .c-gray-highlight   { background: var(--icm-row-gray); }
+
+/* Chips are unbreakable; don't justify a paragraph that carries them. */
+.bd-article p:has(.c-blue-highlight, .c-green-highlight, .c-orange-highlight,
+                  .c-pink-highlight, .c-gray-highlight) {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* Parameters / Returns / Raises field names get the red accent. */
+.bd-article dl.py dl.field-list > dt {
+  color: var(--pst-color-primary);
+  font-weight: 600;
+  background: transparent;
+  padding: 0.1rem 0.5rem 0.1rem 0;
+}
+
+.bd-article dl.py dl.field-list > dd {
+  margin-bottom: 0.4rem;
+}
+
+/* The little "[source]" link autodoc adds (from sphinx.ext.viewcode). */
+.bd-article dl.py > dt .viewcode-link,
+.bd-article dl.py > dt .headerlink {
+  color: var(--pst-color-text-muted);
+  font-size: 0.78rem;
+  font-weight: normal;
+}
+
+/* ======================================================================
+   GLOSSARY
+   The Glossary page is regrouped A–Z by _ext/icm_glossary.py. These rules
+   style the sticky alphabet bar, the letter headings, and the
+   dictionary-style term/definition layout.
+   ====================================================================== */
+
+/* ---- A–Z jump bar: sticks just below the top header while scrolling --- */
+.bd-article .glossary-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 1.25rem 0 2rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--icm-box-bg);
+  border: 1px solid var(--icm-box-border);
+  border-radius: 6px;
+  position: sticky;
+  top: 0.5rem;
+  z-index: 2;
+}
+
+/* Each letter is a square chip: solid red links for present letters,
+   greyed-out and inert for absent ones. */
+.bd-article .glossary-nav-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 4px;
+  font-family: var(--icm-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.bd-article a.glossary-nav-letter {
+  color: #fff !important;
+  background: var(--icm-accent);
+  transition: background 0.12s ease;
+}
+.bd-article a.glossary-nav-letter:hover {
+  background: var(--cmu-red-dark);
+}
+html[data-theme="dark"] .bd-article a.glossary-nav-letter {
+  color: #1e1d1b !important;
+}
+.bd-article .glossary-nav-letter.is-empty {
+  color: var(--pst-color-text-muted);
+  background: transparent;
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---- Big per-letter section headings --------------------------------- */
+.bd-article p.rubric.glossary-letter-heading {
+  font-family: var(--icm-serif);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pst-color-primary);
+  border-bottom: 2px solid var(--icm-box-border);
+  margin: 1.9rem 0 0.6rem;
+  padding-bottom: 0.15rem;
+  scroll-margin-top: 3.5rem;   /* keep heading clear of the sticky bar on jump */
+}
+
+/* ---- Dictionary-style term / definition layout ----------------------- */
+.bd-article dl.glossary.glossary-letter-group {
+  margin-bottom: 0.5rem;
+}
+.bd-article dl.glossary > dt {
+  font-family: var(--icm-serif);
+  font-weight: 700;
+  font-size: 1.06rem;
+  color: var(--pst-color-text-base);
+  margin-top: 0.7rem;
+}
+/* Capitalize the headword's first letter for display only — the source
+   term stays lowercase, keeping {vocab} prose and term ids intact. */
+.bd-article dl.glossary > dt::first-letter {
+  text-transform: uppercase;
+}
+.bd-article dl.glossary > dt .headerlink {
+  color: var(--pst-color-text-muted);
+  font-weight: normal;
+}
+.bd-article dl.glossary > dd {
+  margin: 0.1rem 0 0.4rem 1.4rem;
+}
+.bd-article dl.glossary > dd p {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* ---- Misc utilities -------------------------------------------------- */
+.left {
+  margin: 5px 2px 2px 0 !important;
+  float: left !important;
+}
+
+/* Captions and margin notes: ragged-right, never justified (short lines
+   stretch into gaps). The `.bd-article` prefix is needed to outrank the
+   body justify rule above. */
+.bd-article figcaption p,
+.bd-article aside.margin p,
+.bd-article aside.margin li,
+.bd-article .margin p,
+.bd-article .margin li,
+.bd-article .sidebar p,
+.bd-article .sidebar li {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* Captions step down from body size (same 0.9em as the audio captions). */
+.bd-article figure figcaption {
+  font-size: 0.9em;
+}
+
+/* Hide the auto "Fig. N" counter (numfig) — captions here stand on their
+   own. The trailing space sits inside the span, so no gap is left. */
+figcaption .caption-number {
+  display: none;
+}
+
+/* ======================================================================
+   INLINE AUDIO ({audio} role) + AUDIO-FIGURE grids
+   `` {audio}`label <url>` `` renders a small round play/pause button
+   (icm_audio.py + audio-chip.js). An audio-figure div arranges clips —
+   optionally with waveforms — into a responsive row whose last paragraph
+   is the shared caption.
+   ====================================================================== */
+
+/* Round play/pause button. The circular outline is the SVG progress ring
+   (a faint track + a red arc audio-chip.js fills as the clip plays), not
+   a CSS border. Sits inline, centered on the text. */
+.audio-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9em;
+  height: 1.9em;
+  padding: 0;
+  margin: 0 0.4em 0 0.1em;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  background: var(--pst-color-background);
+  color: var(--icm-accent);
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.audio-chip:hover {
+  background: var(--icm-accent-tint); /* faint accent wash — keeps the ring visible */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+/* The progress ring fills the button; rotate so the arc starts at 12 o'clock. */
+.audio-chip-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  overflow: visible;
+  pointer-events: none;
+}
+.acr-track,
+.acr-fill {
+  fill: none;
+  stroke-width: 2.4;
+}
+.acr-track { stroke: color-mix(in srgb, var(--icm-accent) 25%, transparent); }
+.acr-fill {
+  stroke: var(--icm-accent);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100; /* empty; audio-chip.js advances it per frame (rAF) */
+}
+
+.audio-chip-icon {
+  position: relative; /* above the ring */
+  width: 0.95em;
+  height: 0.95em;
+  fill: currentColor;
+}
+/* Nudge the play triangle to look optically centered in the circle. */
+.audio-chip .ac-play { transform: translateX(1px); }
+.audio-chip .ac-pause { display: none; }
+.audio-chip.is-playing .ac-play { display: none; }
+.audio-chip.is-playing .ac-pause { display: inline; }
+
+/* ----------------------------------------------------------------------
+   BLOCK AUDIO ({audio} directive) — a clean card echoing the inline
+   button: a larger round play/pause control beside the caption, on a
+   subtle tinted panel with a red accent.
+   ---------------------------------------------------------------------- */
+.audio-block {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.3rem 0;
+  /* `!important` beats the theme's `.container` rule, which would zero the
+     horizontal padding and jam the button against the red accent. */
+  padding: 0.6rem 0.95rem !important;
+  background: var(--icm-box-bg);
+  border-left: 3px solid var(--icm-accent);
+  border-radius: 5px;
+}
+/* The larger play button for blocks. Reset the inline chip's side margins
+   so the spacing to the caption is exactly the flex `gap`. */
+.audio-chip-lg {
+  width: 2.3em;
+  height: 2.3em;
+  margin: 0;
+}
+.audio-chip-lg .audio-chip-icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+/* Caption sits beside the button; trim its outer margins so it centers nicely. */
+.audio-block-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.audio-block-body > :first-child { margin-top: 0; }
+.audio-block-body > :last-child { margin-bottom: 0; }
+
+/* Download control on the trailing edge of an audio card: a muted round
+   icon link that warms to red on hover. The flex `gap` on .audio-block
+   sets its spacing from the caption. */
+.audio-download {
+  flex: none;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9em;
+  height: 1.9em;
+  margin-left: 0.15em; /* gap from an inline {audio} label; harmless in the flex card */
+  border-radius: 50%;
+  color: var(--icm-accent-3);
+  text-decoration: none;
+  vertical-align: middle; /* align with text when used inline (the {audio} role) */
+  transition: background 0.15s, color 0.15s;
+}
+.audio-download:hover {
+  color: var(--icm-accent);
+  background: var(--icm-accent-tint);
+}
+.audio-download-icon {
+  width: 1.05em;
+  height: 1.05em;
+  fill: currentColor;
+}
+
+/* Audio produced BY code cells (pq.play): live-cells.js swaps the default
+   <audio> widget for this compact cousin of the audio-block card, sized to
+   its content, with a sans UI label ("Audio output · 1.00 s · …"). */
+.audio-block.audio-output {
+  width: fit-content;
+  min-width: 14rem;
+  max-width: 100%;
+  margin: 0.45rem 0;
+  padding: 0.5rem 1.3rem 0.5rem 0.75rem !important;
+  gap: 0.7rem;
+}
+.audio-output .audio-output-name {
+  display: block;
+  font-family: var(--icm-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.audio-output .audio-output-meta {
+  display: block;
+  font-family: var(--icm-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--icm-accent-3);
+}
+
+/* Three container variants (chosen by the split tool from the group's
+   content): `audio-figure` (clip + waveform cards side by side),
+   `audio-list` (wider columns so text labels fit one line), `audio-board`
+   (clips in a row above one combined plot). In all three the last
+   paragraph is the shared caption. */
+
+/* audio-figure: flexbox (not grid) so a 2-item figure centers cleanly,
+   while wrapped items never stretch full-width. */
+.audio-figure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.9rem 1.6rem;
+  margin: 1.5rem 0;
+}
+.audio-figure > p {
+  /* Small basis so three cards fit one row; max-width keeps a 2-card
+     figure from ballooning or a wrapped lone card from going full-width. */
+  flex: 1 1 190px;
+  max-width: 300px;
+  margin: 0;
+  text-align: center;
+  hyphens: none;
+}
+/* Per-item waveform: fills its card so items in a row line up at equal width. */
+.audio-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0.35rem auto 0;
+}
+.audio-figure > p:last-child {
+  flex-basis: 100%;
+  max-width: none;
+}
+
+/* audio-list: responsive grid — wider columns so each text label fits one line. */
+.audio-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.9rem 1.4rem;
+  justify-items: center;
+  align-items: start;
+  margin: 1.5rem 0;
+}
+.audio-list > p {
+  margin: 0;
+  max-width: 100%;
+  text-align: center;
+  hyphens: none;
+}
+.audio-list > p:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Shared caption styling for the grid/flex variants. */
+.audio-figure > p:last-child,
+.audio-list > p:last-child {
+  margin: 0.35rem 0 0;
+  font-size: 0.9em;
+  color: var(--icm-accent-3);
+}
+
+/* audio-board: clip buttons flow in a centered row that wraps as needed;
+   the shared plot and the caption each take a full row. */
+.audio-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.55rem 1.75rem;
+  margin: 1.5rem 0;
+}
+.audio-board > p {
+  flex: 0 1 auto;
+  margin: 0;
+  text-align: center;
+  hyphens: none;
+}
+/* The standalone plot (an image, no button) and the caption span the full row. */
+.audio-board > p:has(img),
+.audio-board > p:last-child {
+  flex-basis: 100%;
+}
+.audio-board img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 540px);
+  height: auto;
+  margin: 0.5rem auto 0;
+}
+.audio-board > p:last-child {
+  margin-top: 0.35rem;
+  font-size: 0.9em;
+  color: var(--icm-accent-3);
+}
+
+/* ======================================================================
+   NAVIGATION
+   Left sidebar, right in-page TOC, prev/next bar, footer. A smaller
+   serif scale so navigation reads as secondary to article content.
+   ====================================================================== */
+
+/* ---- Shared: the site's body sans across every navigation surface ---- */
+.bd-sidebar-primary,
+.bd-sidebar-secondary,
+.prev-next-footer,
+footer.bd-footer-content {
+  font-family: var(--icm-sans);
+}
+
+/* ---- Left sidebar: layout (desktop only) ----------------------------- */
+/* Widen the column so long titles fit one line. The theme uses a custom
+   property or direct widths depending on the grid container, so set all. */
+@media (min-width: 960px) {
+  .bd-container {
+    --pst-sidebar-primary: 20rem;
+  }
+  .bd-sidebar-primary {
+    width: 20rem;
+    max-width: 20rem;
+    flex: 0 0 20rem;
+  }
+}
+
+/* ---- Left sidebar: part captions (section headers) ------------------- */
+/* Each _toc.yml part caption renders as <p class="caption">. Style them as
+   bold uppercase section headers with the links sitting quietly beneath. */
+.bd-sidebar-primary nav.bd-links p.caption {
+  margin: 1.75rem 0 0.55rem;
+  font-family: var(--icm-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.72rem;
+  color: var(--pst-color-text-base);
+}
+/* The first caption follows the home-link entry; trim its top gap a little. */
+.bd-sidebar-primary nav.bd-links p.caption:first-of-type {
+  margin-top: 1.1rem;
+}
+
+/* ---- Left sidebar: entry styling ------------------------------------- */
+/* Top-level entries in a medium weight — the uppercase captions carry the
+   hierarchy, so the links read as a calm, even list. */
+.bd-sidebar-primary .toctree-l1 > a.reference {
+  font-weight: 500;
+}
+
+/* Tighten the vertical rhythm: trim the theme's 0.25rem link padding so a
+   captioned group reads as one block. Applies to nested links too. */
+.bd-sidebar-primary nav.bd-links li > a {
+  padding-top: 0.14rem;
+  padding-bottom: 0.14rem;
+}
+
+/* A hair of separation between top-level entries. `margin-bottom` on every
+   l1 rather than `margin-top` + `:first-child`: Jupyter Book emits one <ul>
+   per _toc.yml part, so a :first-child reset would drop the margin on
+   whichever chapter is first in its part, making uneven gaps. */
+.bd-sidebar-primary .toctree-l1 {
+  margin-bottom: 0.08rem;
+}
+
+/* Sub-section links shrink so visual hierarchy matches depth. Absolute
+   (rem) sizes so levels don't compound. */
+nav.bd-links .toctree-l2 a,
+nav.bd-links .toctree-l3 a,
+nav.bd-links .toctree-l4 a {
+  font-size: 0.78rem;
+}
+
+/* Expand/collapse chevrons in the muted color so they don't compete with
+   the labels. */
+.bd-sidebar-primary .toctree-toggle {
+  color: var(--pst-color-text-muted);
+}
+
+/* The theme marks the current page with an inset bar drawn via box-shadow
+   (not border-left — which is why the obvious override fails). Keep the
+   bar on the top-level chapter only; active sub-sections already show as
+   red + bold. */
+nav.bd-links li.current:not(.toctree-l1) > a {
+  box-shadow: none !important;
+}
+
+/* Sidebar entries whose titles are inline code (e.g. `pyquist`) keep the
+   code chip but at the same scale and color as their siblings, so the
+   active-state red shows through. */
+nav.bd-links a code,
+nav.bd-links a code .pre {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ---- Right sidebar (in-page "Contents"): nested headings smaller ----- */
+.bd-sidebar-secondary .toc-h3 .nav-link,
+.bd-sidebar-secondary .toc-h4 .nav-link {
+  font-size: 0.78rem;
+}
+
+/* ---- Prev/Next navigation bar between pages -------------------------- */
+.prev-next-area {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+.prev-next-area a p.prev-next-title {
+  font-size: 0.92rem;
+}
+.prev-next-area .prev-next-subtitle {
+  font-size: 0.72rem;
+}
+.prev-next-area a.left-prev p  { text-align: left; }
+.prev-next-area a.right-next p { text-align: right; }
+
+/* ---- Page footer (copyright row) ------------------------------------- */
+footer.bd-footer-content {
+  font-size: 0.78rem;
+}
+
+/* ======================================================================
+   HIDDEN THEME UI — theme controls the book doesn't use, hidden here
+   instead of forking the theme.
+   ====================================================================== */
+
+/* The header search button is redundant — the sidebar has a real search
+   input that's always visible. */
+.search-button {
+  display: none !important;
+}
+
+/* course-nav.js forces the theme switcher to skip "auto"; this hides the
+   third (auto) glyph that would otherwise flicker during the click. */
+.theme-switch-button svg.theme-switch[data-mode="auto"] {
+  display: none !important;
+}
+
+/* ======================================================================
+   NARRATIVE ANIMATIONS (icm_anim / the {animation} directive)
+   theme="auto" clips are baked twice — light and dark renders as sibling
+   <video>s — and these rules show the one matching the reader's mode.
+   Fixed-look clips carry only the bare .icm-anim class and are never
+   hidden. Layout lives HERE, not inline on the element: an inline
+   `display` would outrank the two mode rules and show both renders.
+   ====================================================================== */
+.icm-anim {
+  display: block;
+  max-width: 100%;
+  margin: 0.5rem auto;
+}
+html[data-theme="dark"] .icm-anim-light {
+  display: none;
+}
+html:not([data-theme="dark"]) .icm-anim-dark {
+  display: none;
+}
+/* Dark mode wraps .text_html outputs in a light "legibility card". An
+   animation output is theme-aware by construction, so opt it out (the
+   doubled .output.text_html outranks the theme rule regardless of
+   stylesheet order). */
+html[data-theme="dark"] .bd-content div.cell_output .output.text_html:has(> .icm-anim) {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* ======================================================================
+   SELF-STYLED OUTPUTS IN DARK MODE
+   The dark-mode light "legibility card" is right for baked-light figures
+   but wrong for outputs that carry their own design: the audio chip is
+   fully theme-aware (and live plotly widgets are their own deliberate
+   light surface already).
+   ====================================================================== */
+html[data-theme="dark"] .bd-content div.cell_output .output.text_html:has(audio),
+html[data-theme="dark"] .bd-content div.cell_output .output.text_html:has(.audio-block) {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  /* The card rule also sets dark on-card ink; without the card that ink
+     would be invisible dark-on-dark. */
+  color: inherit;
+}

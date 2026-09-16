@@ -1,3 +1,15 @@
 .DS_Store
 .claude/settings.local.json
 .claude/worktrees/
+node_modules/
+
+# Blog subsite build artifacts (blog/audio/ is the committed output)
+blog-src/_build/
+blog-src/vendor/
+blog-src/_static/wheels/
+blog-src/.venv/
+
+# Python build artifacts
+__pycache__/
+*.egg-info/
+blog-src/stubs/*/build/
