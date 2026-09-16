@@ -33,7 +33,6 @@ I'm also a sports enthusiast. Collegiate-level badminton player 🏸, single-dig
 ### Skills
 
 - **Digital Signal Processing** — Python · MATLAB · C · Max/MSP
-- **Web & Course Tools** — JavaScript · Jupyter Book · Pyodide · Web Audio API
 - **Music Production** — Logic · Ableton · Pro Tools
 
 ### Languages
