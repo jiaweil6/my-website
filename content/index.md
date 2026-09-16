@@ -136,7 +136,7 @@ icon: img/publications/project-aurora.svg
 icon_alt: Project icon
 ```
 
-Google-sponsored GenAI Hackathon at the Tepper School of Business (Mar 2024). Led a four-person team as primary developer on a Python demo of a multilingual messaging platform that lets each user chat in their preferred language. Finished in the top 4 of 26 teams.
+Google-sponsored GenAI Hackathon at the Tepper School of Business (Mar 2024). Led a four-person team as primary developer on a Python demo of a multilingual messaging platform that lets each user chat in their preferred language. Finished in the top 15% of teams.
 
 ### CMUapartment.com
 
